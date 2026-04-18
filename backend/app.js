@@ -22,6 +22,9 @@ app.use('/api/tutorials', tutorialRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
+app.get('/', (req, res) => {
+  res.send('Server is running 🚀');
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
