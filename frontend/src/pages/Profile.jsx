@@ -5,7 +5,7 @@ import { Link, Navigate } from 'react-router-dom';
 const Profile = () => {
   const { user, loading, logout } = useContext(AuthContext);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center text-xl text-primary-600">Chargement...</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center text-xl text-primary-600">Loading...</div>;
 
   if (!user) {
     return <Navigate to="/login" />;
@@ -17,21 +17,21 @@ const Profile = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
           <div>
-            <h1 className="text-5xl font-extrabold text-secondary-900 mb-4">Bonjour, {user.username} ! 👋</h1>
-            <p className="text-2xl text-secondary-800 font-medium">Bienvenue sur votre tableau de bord personnel.</p>
+            <h1 className="text-5xl font-extrabold text-secondary-900 mb-4">Hello, {user.username}! 👋</h1>
+            <p className="text-2xl text-secondary-800 font-medium">Welcome to your personal dashboard.</p>
           </div>
           <button 
             onClick={logout}
             className="bg-red-50 text-red-700 px-8 py-4 rounded-2xl font-bold hover:bg-red-100 transition-colors border-4 border-red-200 text-xl shrink-0"
           >
-            Déconnexion
+            Log out
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Favorites Section */}
           <div className="flat-card p-10">
-            <h2 className="text-3xl font-bold text-secondary-900 mb-8 flex items-center gap-3">⭐ Mes Favoris</h2>
+            <h2 className="text-3xl font-bold text-secondary-900 mb-8 flex items-center gap-3">⭐ My Favorites</h2>
             {user.favorites && user.favorites.length > 0 ? (
               <div className="flex flex-col gap-6">
                 {user.favorites.map(tutorial => (
@@ -47,21 +47,21 @@ const Profile = () => {
               </div>
             ) : (
               <div className="bg-white p-8 rounded-2xl border-4 border-secondary-200 text-center">
-                <p className="text-secondary-800 text-xl font-medium mb-6">Vous n'avez pas encore de tutoriels favoris.</p>
-                <Link to="/tutorials" className="text-primary-600 text-xl font-bold hover:underline">Découvrir les tutoriels</Link>
+                <p className="text-secondary-800 text-xl font-medium mb-6">You don't have any favorite tutorials yet.</p>
+                <Link to="/tutorials" className="text-primary-600 text-xl font-bold hover:underline">Discover tutorials</Link>
               </div>
             )}
           </div>
 
           {/* Scores Section */}
           <div className="flat-card p-10">
-            <h2 className="text-3xl font-bold text-secondary-900 mb-8 flex items-center gap-3">🎮 Mes Scores de Quiz</h2>
+            <h2 className="text-3xl font-bold text-secondary-900 mb-8 flex items-center gap-3">🎮 My Quiz Scores</h2>
             {user.quizScores && user.quizScores.length > 0 ? (
               <div className="flex flex-col gap-6">
                 {user.quizScores.slice().reverse().map((score, index) => (
                   <div key={index} className="flex justify-between items-center bg-white p-6 rounded-2xl border-4 border-secondary-200">
                     <div>
-                      <p className="text-secondary-800 text-xl font-bold">Le {new Date(score.date).toLocaleDateString('fr-FR')}</p>
+                      <p className="text-secondary-800 text-xl font-bold">On {new Date(score.date).toLocaleDateString('en-US')}</p>
                     </div>
                     <div className="text-3xl font-bold text-primary-600">
                       {score.score} <span className="text-xl text-secondary-500">/ {score.total}</span>
@@ -71,8 +71,8 @@ const Profile = () => {
               </div>
             ) : (
               <div className="bg-white p-8 rounded-2xl border-4 border-secondary-200 text-center">
-                <p className="text-secondary-800 text-xl font-medium mb-6">Vous n'avez pas encore joué de quiz.</p>
-                <Link to="/quiz" className="text-primary-600 text-xl font-bold hover:underline">Jouer au Quiz</Link>
+                <p className="text-secondary-800 text-xl font-medium mb-6">You haven't played any quizzes yet.</p>
+                <Link to="/quiz" className="text-primary-600 text-xl font-bold hover:underline">Play a Quiz</Link>
               </div>
             )}
           </div>

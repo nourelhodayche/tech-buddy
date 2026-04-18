@@ -15,18 +15,18 @@ const Register = () => {
       await register(username, password);
       navigate('/profile');
     } catch (err) {
-      setError(err.response?.data?.message || "Erreur lors de l'inscription");
+      setError(err.response?.data?.message || "Error registering");
     }
   };
 
   return (
     <div className="min-h-screen bg-secondary-50 flex items-center justify-center p-4">
       <div className="flat-card w-full max-w-lg p-10 md:p-14">
-        <h1 className="text-4xl font-extrabold text-secondary-900 mb-8 text-center">Créer un compte</h1>
+        <h1 className="text-4xl font-extrabold text-secondary-900 mb-8 text-center">Create an account</h1>
         {error && <div className="bg-red-50 text-red-800 p-4 rounded-2xl mb-6 border-2 border-red-200 text-xl font-medium">{error}</div>}
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div>
-            <label className="block text-secondary-900 text-xl font-bold mb-3">Nom d'utilisateur</label>
+            <label className="block text-secondary-900 text-xl font-bold mb-3">Username</label>
             <input 
               type="text" 
               value={username} 
@@ -37,7 +37,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label className="block text-secondary-900 text-xl font-bold mb-3">Mot de passe</label>
+            <label className="block text-secondary-900 text-xl font-bold mb-3">Password</label>
             <input 
               type="password" 
               value={password} 
@@ -48,11 +48,11 @@ const Register = () => {
             />
           </div>
           <button type="submit" className="w-full bg-primary-600 text-white font-bold text-2xl py-5 rounded-2xl mt-6 hover:bg-primary-700 transition-colors">
-            S'inscrire
+            Register
           </button>
         </form>
         <p className="mt-8 text-center text-secondary-800 text-xl">
-          Déjà un compte ? <Link to="/login" className="text-primary-600 font-bold hover:underline">Se connecter</Link>
+          Already have an account? <Link to="/login" className="text-primary-600 font-bold hover:underline">Log in</Link>
         </p>
       </div>
     </div>

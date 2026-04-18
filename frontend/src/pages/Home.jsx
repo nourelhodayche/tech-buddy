@@ -9,21 +9,21 @@ const Home = () => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-extrabold text-secondary-900 mb-6 tracking-tight">
-            Bienvenue sur <span className="text-primary-600">TechBuddy</span>
+            Welcome to <span className="text-primary-600">TechBuddy</span>
           </h1>
           <p className="text-2xl text-secondary-800 max-w-3xl mx-auto font-medium leading-relaxed mb-10">
-            Votre assistant simple et patient pour comprendre la technologie. Nous rendons l'apprentissage facile et amusant !
+            Your simple and patient assistant to understand technology. We make learning easy and fun!
           </p>
           
           <div className="max-w-2xl mx-auto flat-card p-4 flex items-center gap-4 mb-12">
             <span className="text-primary-500 pl-4"><Search size={32} /></span>
             <input 
               type="text" 
-              placeholder="Que voulez-vous apprendre aujourd'hui ?" 
+              placeholder="What do you want to learn today?" 
               className="flex-1 bg-transparent text-xl text-secondary-900 placeholder-secondary-400 focus:outline-none py-3"
             />
             <button className="bg-primary-600 text-white px-8 py-4 rounded-2xl text-xl font-bold hover:bg-primary-700 transition-colors">
-              Rechercher
+              Search
             </button>
           </div>
         </div>
@@ -36,11 +36,11 @@ const Home = () => {
               <div className="w-20 h-20 bg-primary-50 text-primary-600 rounded-2xl flex items-center justify-center mb-8">
                 <BookOpen size={40} />
               </div>
-              <h2 className="text-3xl font-bold text-secondary-900 mb-4">Tutoriels Simples</h2>
-              <p className="text-secondary-600 text-xl mb-10 leading-relaxed font-medium">Des guides étape par étape, faciles à lire, pour utiliser votre téléphone et internet.</p>
+              <h2 className="text-3xl font-bold text-secondary-900 mb-4">Simple Tutorials</h2>
+              <p className="text-secondary-600 text-xl mb-10 leading-relaxed font-medium">Step-by-step, easy-to-read guides to use your phone and the internet.</p>
             </div>
             <Link to="/tutorials" className="inline-flex items-center justify-center w-full bg-secondary-900 text-white px-6 py-5 rounded-2xl text-xl font-bold hover:bg-secondary-800 transition-colors">
-              Commencer à apprendre
+              Start learning
             </Link>
           </div>
 
@@ -50,11 +50,11 @@ const Home = () => {
               <div className="w-20 h-20 bg-accent-50 text-accent-600 rounded-2xl flex items-center justify-center mb-8">
                 <Bot size={40} />
               </div>
-              <h2 className="text-3xl font-bold text-secondary-900 mb-4">Assistant Vocal</h2>
-              <p className="text-secondary-600 text-xl mb-10 leading-relaxed font-medium">Bloqué sur un problème ? Posez votre question à voix haute à notre assistant intelligent.</p>
+              <h2 className="text-3xl font-bold text-secondary-900 mb-4">Voice Assistant</h2>
+              <p className="text-secondary-600 text-xl mb-10 leading-relaxed font-medium">Stuck on a problem? Ask your question out loud to our smart assistant.</p>
             </div>
             <Link to="/chatbot" className="inline-flex items-center justify-center w-full bg-primary-600 text-white px-6 py-5 rounded-2xl text-xl font-bold hover:bg-primary-700 transition-colors">
-              Poser une question
+              Ask a question
             </Link>
           </div>
 
@@ -64,11 +64,11 @@ const Home = () => {
               <div className="w-20 h-20 bg-primary-50 text-primary-600 rounded-2xl flex items-center justify-center mb-8">
                 <Gamepad2 size={40} />
               </div>
-              <h2 className="text-3xl font-bold text-secondary-900 mb-4">Quiz Amusants</h2>
-              <p className="text-secondary-600 text-xl mb-10 leading-relaxed font-medium">Testez ce que vous avez appris sans stress et suivez vos progrès.</p>
+              <h2 className="text-3xl font-bold text-secondary-900 mb-4">Fun Quizzes</h2>
+              <p className="text-secondary-600 text-xl mb-10 leading-relaxed font-medium">Test what you've learned stress-free and track your progress.</p>
             </div>
             <Link to="/quiz" className="inline-flex items-center justify-center w-full bg-secondary-900 text-white px-6 py-5 rounded-2xl text-xl font-bold hover:bg-secondary-800 transition-colors">
-              Faire un Quiz
+              Take a Quiz
             </Link>
           </div>
         </div>

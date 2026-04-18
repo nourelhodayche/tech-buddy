@@ -18,11 +18,11 @@ const Chatbot = () => {
   const startListening = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      alert("Désolé, votre navigateur ne supporte pas la reconnaissance vocale.");
+      alert("Sorry, your browser doesn't support speech recognition.");
       return;
     }
     const recognition = new SpeechRecognition();
-    recognition.lang = navigator.language || 'fr-FR';
+    recognition.lang = navigator.language || 'en-US';
     recognition.interimResults = true;
     recognition.continuous = false;
 
@@ -39,7 +39,7 @@ const Chatbot = () => {
     recognition.onerror = (event) => {
       console.error("Speech recognition error:", event.error);
       if (event.error === 'not-allowed') {
-        alert("Veuillez autoriser l'accès au microphone dans les paramètres de votre navigateur.");
+        alert("Please allow microphone access in your browser settings.");
       }
     };
     recognition.onend = () => setIsListening(false);
@@ -54,7 +54,7 @@ const Chatbot = () => {
       return;
     }
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'fr-FR'; // We can make this dynamic later
+    utterance.lang = 'en-US'; 
     utterance.onend = () => setIsSpeaking(false);
     setIsSpeaking(true);
     synth.speak(utterance);
@@ -64,8 +64,6 @@ const Chatbot = () => {
     if (!input.trim()) return;
     const userMessage = { role: 'user', text: input };
     
-    // We send the *current* messages as history, before adding the new userMessage 
-    // because the backend already appends the new message itself.
     const currentHistory = [...messages];
     
     setMessages(prev => [...prev, userMessage]);
@@ -85,8 +83,8 @@ const Chatbot = () => {
       <div className="max-w-4xl mx-auto px-4 relative z-10">
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-2xl shadow-sm mb-6 text-4xl">🤖</div>
-          <h1 className="text-5xl font-extrabold text-secondary-900 mb-4">Assistant Intelligent</h1>
-          <p className="text-2xl text-secondary-800 font-medium">Posez-moi n'importe quelle question sur la technologie !</p>
+          <h1 className="text-5xl font-extrabold text-secondary-900 mb-4">Smart Assistant</h1>
+          <p className="text-2xl text-secondary-800 font-medium">Ask me any technology question!</p>
         </div>
         
         <div className="flat-card p-6 md:p-10 mb-8 h-[550px] overflow-y-auto flex flex-col gap-8 custom-scrollbar">
@@ -108,7 +106,7 @@ const Chatbot = () => {
                       onClick={() => toggleSpeak(msg.text)}
                       className="mt-6 flex items-center gap-3 text-primary-700 bg-white px-5 py-3 rounded-2xl text-lg font-bold border-2 border-primary-200 hover:bg-primary-50 transition-colors"
                     >
-                      {isSpeaking ? <><VolumeX size={24}/> Arrêter la lecture</> : <><Volume2 size={24}/> Lire à voix haute</>}
+                      {isSpeaking ? <><VolumeX size={24}/> Stop reading</> : <><Volume2 size={24}/> Read aloud</>}
                     </button>
                   </div>
                 )}
@@ -131,7 +129,7 @@ const Chatbot = () => {
             onClick={startListening}
             className={`flex items-center justify-center gap-3 px-8 py-5 rounded-2xl text-2xl font-bold border-4 transition-all shadow-sm md:w-auto w-full ${isListening ? 'bg-red-50 text-red-700 border-red-500 animate-pulse' : 'bg-white text-secondary-800 border-secondary-200 hover:border-primary-400 hover:bg-primary-50'}`}
           >
-            {isListening ? <><MicOff size={32} /> Écoute...</> : <><Mic size={32} /> Parler</>}
+            {isListening ? <><MicOff size={32} /> Listening...</> : <><Mic size={32} /> Speak</>}
           </button>
           <div className="flex flex-1 items-center bg-white rounded-2xl shadow-sm border-4 border-secondary-200 overflow-hidden focus-within:border-primary-500 transition-colors">
             <input
@@ -139,7 +137,7 @@ const Chatbot = () => {
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyPress={e => e.key === 'Enter' && handleSend()}
-              placeholder="Tapez votre question ici..."
+              placeholder="Type your question here..."
               className="flex-1 bg-transparent px-6 py-5 text-2xl text-secondary-900 focus:outline-none placeholder-secondary-500"
             />
             <button 
@@ -147,7 +145,7 @@ const Chatbot = () => {
               disabled={loading || !input.trim()}
               className="bg-primary-600 text-white px-10 py-5 text-2xl font-bold hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed m-1 rounded-xl"
             >
-              Envoyer
+              Send
             </button>
           </div>
         </div>

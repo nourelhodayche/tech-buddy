@@ -33,7 +33,7 @@ const Navbar = () => {
             to="/tutorials" 
             className={`text-xl font-bold transition-colors ${isActive('/tutorials') ? 'text-primary-600' : 'text-secondary-800 hover:text-primary-600'}`}
           >
-            Tutoriels
+            Tutorials
           </Link>
           <Link 
             to="/chatbot" 
@@ -70,14 +70,14 @@ const Navbar = () => {
               to="/profile" 
               className="flex items-center gap-2 bg-secondary-900 text-white px-6 py-3 rounded-xl font-bold shadow-sm hover:bg-primary-600 transition-colors ml-2 text-lg"
             >
-              <User size={24} /> Profil
+              <User size={24} /> Profile
             </Link>
           ) : (
             <Link 
               to="/login" 
               className="bg-primary-600 text-white px-6 py-3 rounded-xl font-bold shadow-sm hover:bg-primary-700 hover:shadow transition-all ml-2 text-lg"
             >
-              Connexion
+              Login
             </Link>
           )}
         </div>

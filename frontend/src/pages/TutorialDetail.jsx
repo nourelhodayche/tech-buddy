@@ -6,7 +6,7 @@ import { Star } from 'lucide-react';
 
 const TutorialDetail = () => {
   const { id } = useParams();
-  const [tutorial, setTutorial] = useState(null);
+  const [tutorial, setTutorials] = useState(null);
   const [loading, setLoading] = useState(true);
   const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -28,13 +28,13 @@ const TutorialDetail = () => {
 
   useEffect(() => {
     getTutorialById(id)
-      .then(res => { setTutorial(res.data); setLoading(false); })
+      .then(res => { setTutorials(res.data); setLoading(false); })
       .catch(err => { console.log(err); setLoading(false); });
   }, [id]);
 
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center bg-secondary-50">
-      <p className="text-3xl text-primary-600 font-bold">Chargement... ⏳</p>
+      <p className="text-3xl text-primary-600 font-bold">Loading... ⏳</p>
     </div>
   );
 
@@ -42,7 +42,7 @@ const TutorialDetail = () => {
     <div className="min-h-screen bg-secondary-50 py-16 relative overflow-hidden">
       <div className="max-w-3xl mx-auto px-4 relative z-10">
         <Link to="/tutorials" className="inline-flex items-center text-primary-600 font-bold text-2xl mb-8 hover:text-primary-700 hover:-translate-x-1 transition-all">
-          ← Retour aux tutoriels
+          ← Back to tutorials
         </Link>
         <div className="flat-card p-10 md:p-14">
           <span className={`text-lg font-bold px-4 py-2 rounded-xl inline-block mb-6 ${tutorial.level === 'Important' ? 'bg-orange-100 text-orange-800 border-2 border-orange-200' : 'bg-primary-100 text-primary-800 border-2 border-primary-200'}`}>
@@ -54,7 +54,7 @@ const TutorialDetail = () => {
             <button 
               onClick={handleFavorite}
               className={`p-4 rounded-2xl border-2 transition-all shrink-0 ${isFavorite ? 'bg-yellow-100 text-yellow-500 border-yellow-200 hover:bg-yellow-200' : 'bg-secondary-100 text-secondary-400 border-secondary-200 hover:bg-yellow-50 hover:text-yellow-500'}`}
-              title={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+              title={isFavorite ? "Remove from favorites" : "Add to favorites"}
             >
               <Star size={36} fill={isFavorite ? "currentColor" : "none"} />
             </button>
@@ -64,7 +64,7 @@ const TutorialDetail = () => {
           
           <div className="bg-secondary-50 border-4 border-secondary-100 rounded-3xl p-10">
             <h2 className="text-3xl font-bold text-secondary-900 mb-8 flex items-center gap-3">
-              <span>📋</span> Guide Étape par Étape
+              <span>📋</span> Step-by-Step Guide
             </h2>
             <div className="flex flex-col gap-8">
               {tutorial.content.split('.').filter(s => s.trim()).map((step, index) => (
