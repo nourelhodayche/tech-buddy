@@ -1,11 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const chatRoutes = require('./routes/chat');
 const tutorialRoutes = require('./routes/tutorials');
 const quizRoutes = require('./routes/quiz');
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -17,6 +20,8 @@ app.use(express.json());
 app.use('/api/chat', chatRoutes);
 app.use('/api/tutorials', tutorialRoutes);
 app.use('/api/quiz', quizRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)

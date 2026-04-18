@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-secondary-800 bg-secondary-50;
+  }
+}
+
+@layer utilities {
+  .flat-card {
+    @apply bg-white rounded-3xl border border-secondary-200 shadow-sm transition-all;
+  }
+}

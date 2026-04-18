@@ -5,65 +5,98 @@ const Quiz = require('./models/Quiz');
 
 const tutorials = [
   {
-    title: 'How to make a video call',
-    description: 'Learn to use WhatsApp, Zoom & FaceTime',
-    content: 'Step 1: Open WhatsApp. Step 2: Tap on a contact. Step 3: Tap the video camera icon. Step 4: Wait for them to answer!',
-    level: 'Beginner',
-    category: 'Communication'
+    title: "Comment faire un appel vidéo",
+    description: "Apprenez à utiliser WhatsApp, Zoom et FaceTime",
+    content: "Étape 1 : Ouvrez WhatsApp. Étape 2 : Appuyez sur un contact. Étape 3 : Appuyez sur l'icône de la caméra. Étape 4 : Attendez qu'ils répondent !",
+    level: "Débutant",
+    category: "Communication"
   },
   {
-    title: 'How to use email',
-    description: 'Send, receive & organize your emails',
-    content: 'Step 1: Open your email app. Step 2: Tap "Compose" or "New". Step 3: Type the email address of the person. Step 4: Write your message. Step 5: Tap Send!',
-    level: 'Beginner',
-    category: 'Communication'
+    title: "Comment utiliser les emails",
+    description: "Envoyez, recevez et organisez vos courriels",
+    content: "Étape 1 : Ouvrez votre application d'email. Étape 2 : Appuyez sur 'Nouveau message'. Étape 3 : Tapez l'adresse email de la personne. Étape 4 : Écrivez votre message. Étape 5 : Appuyez sur Envoyer !",
+    level: "Débutant",
+    category: "Communication"
   },
   {
-    title: 'How to avoid online scams',
-    description: 'Stay safe from fraud & phishing',
-    content: 'Step 1: Never share your password. Step 2: Do not click suspicious links. Step 3: If someone asks for money online, it is likely a scam. Step 4: When in doubt, ask a family member!',
-    level: 'Important',
-    category: 'Safety'
+    title: "Comment éviter les arnaques en ligne",
+    description: "Restez en sécurité face aux fraudes",
+    content: "Étape 1 : Ne partagez jamais votre mot de passe. Étape 2 : Ne cliquez pas sur des liens suspects. Étape 3 : Si quelqu'un demande de l'argent en ligne, c'est probablement une arnaque. Étape 4 : En cas de doute, demandez à un proche !",
+    level: "Important",
+    category: "Sécurité"
   },
   {
-    title: 'How to search on Google',
-    description: 'Find information easily & safely',
-    content: 'Step 1: Open your browser. Step 2: Go to google.com. Step 3: Type what you are looking for. Step 4: Press Enter. Step 5: Click on the result that looks most helpful!',
-    level: 'Beginner',
-    category: 'Internet'
+    title: "Comment chercher sur Google",
+    description: "Trouvez des informations facilement",
+    content: "Étape 1 : Ouvrez votre navigateur internet. Étape 2 : Allez sur google.com. Étape 3 : Tapez ce que vous cherchez dans la barre de recherche. Étape 4 : Appuyez sur Entrée. Étape 5 : Cliquez sur le résultat le plus pertinent !",
+    level: "Débutant",
+    category: "Internet"
+  },
+  {
+    title: "Comment envoyer une photo par SMS",
+    description: "Partagez vos souvenirs avec vos proches",
+    content: "Étape 1 : Ouvrez l'application Messages. Étape 2 : Choisissez une conversation. Étape 3 : Appuyez sur l'icône 'Plus' ou l'icône 'Appareil photo'. Étape 4 : Sélectionnez votre photo dans la galerie. Étape 5 : Appuyez sur Envoyer !",
+    level: "Débutant",
+    category: "Communication"
+  },
+  {
+    title: "Comment mettre à jour son téléphone",
+    description: "Gardez votre appareil rapide et sécurisé",
+    content: "Étape 1 : Allez dans les Paramètres de votre téléphone. Étape 2 : Cherchez 'Système' ou 'Général'. Étape 3 : Appuyez sur 'Mise à jour logicielle'. Étape 4 : Si une mise à jour est disponible, appuyez sur 'Télécharger et installer'.",
+    level: "Important",
+    category: "Système"
+  },
+  {
+    title: "Comment se connecter au Wi-Fi",
+    description: "Accédez à internet gratuitement chez vous",
+    content: "Étape 1 : Ouvrez les Paramètres. Étape 2 : Appuyez sur Wi-Fi. Étape 3 : Activez le Wi-Fi si ce n'est pas fait. Étape 4 : Sélectionnez le nom de votre box internet. Étape 5 : Entrez le mot de passe (souvent écrit sous la box).",
+    level: "Débutant",
+    category: "Internet"
   }
 ];
 
 const quizQuestions = [
   {
-    question: 'What does WiFi allow you to do?',
-    options: ['Connect to the internet without cables', 'Make phone calls only', 'Print documents', 'Watch TV channels'],
+    question: "À quoi sert le Wi-Fi ?",
+    options: ["À se connecter à internet sans fil", "À passer des appels téléphoniques uniquement", "À imprimer des documents", "À regarder des chaînes TV"],
     correctAnswer: 0,
-    explanation: 'WiFi lets you connect to the internet without any cables!'
+    explanation: "Le Wi-Fi vous permet de vous connecter à internet sans aucun câble !"
   },
   {
-    question: 'What should you do if someone asks for your password online?',
-    options: ['Give it to them', 'Never share it with anyone', 'Share it with friends', 'Write it in an email'],
+    question: "Que faire si quelqu'un vous demande votre mot de passe ?",
+    options: ["Le lui donner", "Ne jamais le partager avec personne", "Le partager avec des amis", "L'écrire dans un email"],
     correctAnswer: 1,
-    explanation: 'Never share your password with anyone — not even people who seem trustworthy!'
+    explanation: "Ne partagez jamais votre mot de passe avec personne — pas même avec des personnes qui semblent dignes de confiance !"
   },
   {
-    question: 'What is a video call?',
-    options: ['A phone call with no sound', 'Talking to someone while seeing them on screen', 'Sending a video file', 'Watching a movie online'],
+    question: "Qu'est-ce qu'un appel vidéo ?",
+    options: ["Un appel téléphonique sans son", "Parler à quelqu'un tout en le voyant à l'écran", "Envoyer un fichier vidéo", "Regarder un film en ligne"],
     correctAnswer: 1,
-    explanation: 'A video call lets you see and talk to someone through your phone or computer screen!'
+    explanation: "Un appel vidéo vous permet de voir et de parler à quelqu'un via l'écran de votre téléphone ou de votre ordinateur !"
   },
   {
-    question: 'What does the @ symbol mean in an email address?',
-    options: ['It means the email is free', 'It separates your name from the email provider', 'It means the email is private', 'It is just decoration'],
+    question: "Que signifie le symbole @ dans une adresse email ?",
+    options: ["Que l'email est gratuit", "Il sépare le nom de l'utilisateur et le fournisseur d'email", "Que l'email est privé", "C'est juste pour faire joli"],
     correctAnswer: 1,
-    explanation: 'The @ symbol separates your name from the email provider, for example name@gmail.com!'
+    explanation: "Le symbole @ sépare votre nom du fournisseur d'accès, par exemple nom@gmail.com !"
   },
   {
-    question: 'What should you do if you receive a suspicious link?',
-    options: ['Click on it immediately', 'Share it with friends', 'Delete it and do not click', 'Reply to the sender'],
+    question: "Que faire si vous recevez un lien suspect par SMS ou email ?",
+    options: ["Cliquer dessus immédiatement", "Le partager avec des amis", "Le supprimer et ne pas cliquer", "Répondre à l'expéditeur"],
     correctAnswer: 2,
-    explanation: 'Never click suspicious links — delete them immediately to stay safe!'
+    explanation: "Ne cliquez jamais sur des liens suspects — supprimez-les immédiatement pour rester en sécurité !"
+  },
+  {
+    question: "Où se trouve généralement le bouton pour fermer une application ou une fenêtre ?",
+    options: ["En bas au centre", "En haut à droite (une croix rouge ou un 'X')", "Sur le côté gauche", "Il n'y a pas de bouton"],
+    correctAnswer: 1,
+    explanation: "Sur la plupart des écrans, le bouton pour fermer (souvent un 'X') se trouve dans le coin supérieur droit."
+  },
+  {
+    question: "À quelle fréquence devriez-vous éteindre et redémarrer complètement votre téléphone ?",
+    options: ["Une fois par an", "Jamais", "Au moins une fois par semaine", "Toutes les heures"],
+    correctAnswer: 2,
+    explanation: "Redémarrer votre téléphone une fois par semaine permet de le garder rapide et d'éviter des bugs !"
   }
 ];
 
